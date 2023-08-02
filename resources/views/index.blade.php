@@ -21,6 +21,23 @@
                     <button>Выйти из профиля</button>
                 </form>
             </div>
+            <div>
+                <h2>Создайте свой пост</h2>
+            </div>
+            <div>
+                <form action="/create-post" method="POST">
+                    @csrf
+                    <div>
+                        <input name="title" type="text" placeholder="Введите название Вашего поста">
+                    </div>
+                    <div>
+                        <textarea name="content" cols="30" rows="10" placeholder="Содержание Вашего поста"></textarea>
+                    </div>
+                    <div>
+                        <button>Опубликовать</button>
+                    </div>
+                </form>
+            </div>
             @endauth
 
             @guest
