@@ -34,6 +34,15 @@
                     <button>Зарегистрировать</button>
                 </form>
             </div>
+            <div>
+                <h2>Войти в профиль</h2>
+                <form action="/login" method="POST">
+                    @csrf
+                    <input name="loginname" type="text" placeholder="Введите имя пользователя">
+                    <input name="loginpassword" type="password" placeholder="Введите пароль">
+                    <button>Войти</button>
+                </form>
+            </div>
             @endguest
 
         </article>
