@@ -47,7 +47,16 @@
                 <p>
                     {{ $post['content'] }}
                 </p>
-            </div>    
+            </div>
+            <div>
+                <a href="/edit-post/{{ $post->id }}">Изменить</a>
+            </div>  
+            <div>
+                <form action="/delete-post/{{ $post->id }}" method="POST"></form>
+                @csrf
+                @method('DELETE')
+                <button>Удалить пост</button>
+            </div>
             @endforeach
             @endauth
 
