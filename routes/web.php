@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $posts = [];
+    if (auth()->check()) {
+        $posts = auth()->user()->usersPosts()->latest()->get();
+    }
+    return view('index', ['posts' => $posts]);
 });
 
 Route::post('/register', [UserController::class, 'register']);

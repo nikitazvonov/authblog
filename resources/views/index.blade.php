@@ -38,6 +38,17 @@
                     </div>
                 </form>
             </div>
+            <div>
+                <h2>Все посты</h2>
+            </div>
+            @foreach ($posts as $post)
+            <div>
+                <h3>{{ $post['title'] }}</h3>
+                <p>
+                    {{ $post['content'] }}
+                </p>
+            </div>    
+            @endforeach
             @endauth
 
             @guest
