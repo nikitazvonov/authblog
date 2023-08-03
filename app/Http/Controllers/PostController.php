@@ -7,7 +7,13 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function updatePost (Post $post, Request $request) {
+    public function deletePost(Post $post) {
+        if (auth()->user()->id === $post['user_id']) {
+            $post->delete();
+        }
+        return redirect('/');
+    }
+    public function updatePost(Post $post, Request $request) {
         if (auth()->user()->id !== $post['user_id']) {
             return redirect('/');
         }
@@ -23,13 +29,13 @@ class PostController extends Controller
         $post->update($incomingField);
         return redirect('/');
     }
-    public function showEditScreen (Post $post) {
+    public function showEditScreen(Post $post) {
         if (auth()->user()->id !== $post['user_id']) {
             return redirect('/');
         }
         return view('edit-post', ['post' => $post]);
     }
-    public function createPost (Request $request) {
+    public function createPost(Request $request) {
         $incomingField = $request->validate([
             'title' => 'required',
             'content' => 'required'
